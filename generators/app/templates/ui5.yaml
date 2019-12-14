@@ -1,0 +1,38 @@
+specVersion: '1.0'
+metadata:
+  name: <%= projectname %>
+type: application
+server: 
+  customMiddleware:
+    - name: ui5-middleware-servestatic
+      afterMiddleware: compression
+      mountPath: /ui5
+      configuration:
+        rootPath: "<%= ui5Path %>"
+    - name: ui5-middleware-proxy-basicauth
+      afterMiddleware: compression
+      mountPath: /sap
+      configuration:
+        baseUri: "http://saphir101.ddns.net:8000/sap"
+        auth: "jberthe:joseph23"
+        client: "100"
+builder:
+  customTasks:
+  - name: ui5-task-nwabap-deployer
+    afterTask: generateVersionInfo
+    configuration: 
+      resources:
+        path: dist
+        pattern: "**/*.*"
+      connection:
+        server: http://saphir101.ddns.net:8000  
+      authentication:
+        user: jberthe
+        password: joseph23
+      ui5:
+        language: EN
+        package: /SDC/FE_PLUGIN
+        bspContainer: /SDC/WELCOME_PLUGIN
+        bspContainerText: UI5 Upload
+        transportNo: S01K900386
+        calculateApplicationIndex: true      

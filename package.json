@@ -1,0 +1,22 @@
+{
+  "name": "generator-app-fiori",
+  "version": "1.0.0",
+  "description": "Generate Fiori Application based on Fiori Guidelines",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jberthe",
+  "license": "ISC",
+  "dependencies": {
+    "yeoman-generator": "^1.1.1"
+  },
+  "files": [
+    "generators",
+    "app",
+    "router"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ]
+}
