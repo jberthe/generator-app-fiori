@@ -12,7 +12,7 @@
       "eslint": "^6.2.2"
     },
     "scripts": {
-      "build": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
+      "deploy": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
       "lint": "eslint webapp"
     },
     "ui5": {
