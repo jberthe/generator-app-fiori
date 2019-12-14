@@ -36,13 +36,18 @@ module.exports = class extends Generator {
       },
       {
         type: "input",
+        name: "serverClient",
+        message: "ABAP Server client"
+      },
+      {
+        type: "input",
         name: "userID",
         message: "ABAP Server user ID"
       },
       {
         type: "input",
         name: "password",
-        message: "ABAP Server password"
+        message: "ABAP Server password"serverClient
       }
     ]).then((answers) => {
       this.destinationRoot(`${answers.projectname}`);

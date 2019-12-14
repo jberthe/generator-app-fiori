@@ -15,7 +15,7 @@ server:
       configuration:
         baseUri: "<%= ODataServer %>/sap"
         auth: "<%= userID %>:<%= password %>"
-        client: "100"
+        client: "<%= serverClient %>"
 builder:
   customTasks:
   - name: ui5-task-nwabap-deployer
