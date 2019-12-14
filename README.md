@@ -1,5 +1,7 @@
-# generator-app-fiori
-Generate SAPUI5 Applciation base on UI5 Tooling.
+# Description
+This generator create a Fiori application base on Worklist template. It uses the last UI5 Tooling to make your life easy. The generated project embedded as well a Lanchpad to integrate an SAPui5 Component. You do not need to create an `index.html`to load your project.
+
+This template is for Fiori programmer which develop on On-Premise ABAP system.
 
 ## References
 I based my work on multiple sources. 
@@ -46,4 +48,9 @@ We assume that you execute the generator in the following environement :
     ui5 serve
     ```
 4. In your favorite browser, launch the `Launchpad.html`
+
+#### Deploy on ABAP Server
+ ```
+npm build
+```
 
