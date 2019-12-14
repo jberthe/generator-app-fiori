@@ -19,13 +19,30 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "name_space",
-        message: "Namespace (ch.my.company.module)"
+        message: "Namespace",
+        default: "ch.my.company.module"
       },
       {
         type: "input",
         name: "ui5Path",
-        message: "UI5 Path",
+        message: "Local UI5 Path",
         default: "../ui5"
+      },
+      {
+        type: "input",
+        name: "ODataServer",
+        message: "ABAP Server uri",
+        default: "https://my.server.local:8001"
+      },
+      {
+        type: "input",
+        name: "userID",
+        message: "ABAP Server user ID"
+      },
+      {
+        type: "input",
+        name: "password",
+        message: "ABAP Server password"
       }
     ]).then((answers) => {
       this.destinationRoot(`${answers.projectname}`);

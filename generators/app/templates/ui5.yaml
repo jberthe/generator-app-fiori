@@ -13,8 +13,8 @@ server:
       afterMiddleware: compression
       mountPath: /sap
       configuration:
-        baseUri: "http://saphir101.ddns.net:8000/sap"
-        auth: "jberthe:joseph23"
+        baseUri: "<%= ODataServer %>/sap"
+        auth: "<%= userID %>:<%= password %>"
         client: "100"
 builder:
   customTasks:
@@ -25,10 +25,10 @@ builder:
         path: dist
         pattern: "**/*.*"
       connection:
-        server: http://saphir101.ddns.net:8000  
+        server: <%= ODataServer %>  
       authentication:
-        user: jberthe
-        password: joseph23
+        user: <%= userID %>
+        password: <%= password %>
       ui5:
         language: EN
         package: /SDC/FE_PLUGIN
