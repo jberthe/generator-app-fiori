@@ -61,6 +61,16 @@ The language should be change by the rigth language in 2 characters.
 npm deploy
 ```
 
+### What's inside the template
+- [X] Full page application with route enabled
+- [X] Semantic page (sap.f.semantic)
+- [X] BaseController.js
+- [X] QUnit
+- [X] XML Views only
+- [ ] OData messages hanlded
+- [ ] UIVer5 Testing
+- [ ] ES6 lint
+- [ ] Class template for OData call with promise
 
 
 ## References
