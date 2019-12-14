@@ -48,7 +48,7 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "password",
-        message: "ABAP Server password"serverClient
+        message: "ABAP Server password"
       }
     ]).then((answers) => {
       this.destinationRoot(`${answers.projectname}`);
