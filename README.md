@@ -21,5 +21,29 @@ We assume that you execute the generator in the following environement :
    |
    +- HERE
 ```
+### Install
+1. Get [Node.js](https://nodejs.org/en/download/) (version 8.5 or higher)
+2. Install the generator
+    ```sh
+    npm install -g yo generator-app-fiori
+    ```
+3. Verify your installation to see if Yeoman has been installed correctly
+    ```sh
+    yo
+    ```
+	Make sure you see the `app-fiori` generator listed.
+### Usage
+#### Create your first SAPui5 App within a few seconds!
 
+1. Scaffold your SAPui5 project
+    ```
+    yo app-fiori
+    ```
+2. Answer the prompts to create your SAPui5 project
+3. Run it locally
+    ```
+    cd <your project name>
+    ui5 serve
+    ```
+4. In your favorite browser, launch the `Launchpad.html`
 
