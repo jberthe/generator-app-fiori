@@ -30,9 +30,9 @@ builder:
         user: <%= userID %>
         password: <%= password %>
       ui5:
-        language: EN
-        package: /SDC/FE_PLUGIN
-        bspContainer: /SDC/WELCOME_PLUGIN
+        language: EN/FR/..
+        package: TODO
+        bspContainer: TODO
         bspContainerText: UI5 Upload
-        transportNo: S01K900386
+        transportNo: TODO
         calculateApplicationIndex: true      
