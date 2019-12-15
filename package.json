@@ -1,10 +1,10 @@
 {
   "name": "generator-app-fiori",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Generate Fiori Application based on Fiori Guidelines, conected to ABAP server and using the last UI5 Tooling.",
   "main": "generators/app/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   "author": "jberthe",
   "license": "ISC",
   "dependencies": {
-    "yeoman-generator": "^1.1.1",
+    "yeoman-generator": "^4.2.0",
     "diff": ">=3.5.0",
     "deep-extend": ">=0.5.1"
   },
@@ -30,5 +30,11 @@
     "sap",
     "fiori",
     "sapui5"
-  ]
+  ],
+  "devDependencies": {
+    "execa": "^3.2.0",
+    "mocha": "^6.2.2",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^2.0.0"
+  }
 }
