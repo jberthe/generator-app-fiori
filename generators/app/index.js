@@ -36,6 +36,12 @@ module.exports = class extends Generator {
       },
       {
         type: "input",
+        name: "ODataServiceURL",
+        message: "ODATA Service uri",
+        default: "/sap/opu/odata/sap/MyService"
+      },
+      {
+        type: "input",
         name: "serverClient",
         message: "ABAP Server client",
         default: "100"
