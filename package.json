@@ -1,6 +1,6 @@
 {
   "name": "generator-app-fiori",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Generate Fiori Application based on Fiori Guidelines, conected to ABAP server and using the last UI5 Tooling.",
   "main": "generators/app/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/jberthe/generator-app-fiori.git"
   },
   "author": "jberthe",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "yeoman-generator": "^4.2.0",
     "diff": ">=3.5.0",
