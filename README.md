@@ -28,6 +28,7 @@ We assume that you execute the generator in the following environement :
 	Make sure you see the `app-fiori` generator listed.
 ### Usage
 #### Create your first SAPui5 App within a few seconds!
+![](./doc/installation.gif)
 
 1. Scaffold your SAPui5 project
     ```sh
@@ -39,7 +40,9 @@ We assume that you execute the generator in the following environement :
     cd <your project name>
     npm start
     ```
-4. In your favorite browser, launch the `Launchpad.html`
+4. Your favorite browser launches the `Launchpad.html`
+
+![](./doc/launch.gif)
 
 #### Deploy on ABAP Server
 This command will build your UI5 application into `dist` folder, and then deploy into your ABAP system.

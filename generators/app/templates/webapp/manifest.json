@@ -56,7 +56,10 @@
 				"sap.f": {}
 			}
 		},
-
+		"config": {
+			"fullWidth": true
+		},
+		
 		"contentDensities": {
 			"compact": true,
 			"cozy": true
@@ -91,8 +94,8 @@
 			"routes": [
 				{
 					"pattern": "",
-					"name": "worklist",
-					"target": ["worklist"]
+					"name": "main",
+					"target": ["main"]
 				},
 				{
 					"pattern": "Objects/{objectId}",
@@ -102,17 +105,11 @@
 			],
 
 			"targets": {
-				"worklist": {
-					"viewName": "Worklist",
-					"viewId": "worklist",
+				"main": {
+					"viewName": "Main",
+					"viewId": "main",
 					"viewLevel": 1,
-					"title": "{i18n>worklistViewTitle}"
-				},
-				"object": {
-					"viewName": "Object",
-					"viewId": "object",
-					"viewLevel": 2,
-					"title": "{i18n>objectViewTitle}"
+					"title": "{i18n>mainViewTitle}"
 				},
 				"objectNotFound": {
 					"viewName": "ObjectNotFound",

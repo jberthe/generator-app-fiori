@@ -10,5 +10,4 @@
 			busy="{appView>/busy}"
 			busyIndicatorDelay="{appView>/delay}"/>
 	</Shell>
-
 </mvc:View>
