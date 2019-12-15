@@ -37,7 +37,7 @@ We assume that you execute the generator in the following environement :
 3. Run it locally
     ```sh
     cd <your project name>
-    ui5 serve
+    npm start
     ```
 4. In your favorite browser, launch the `Launchpad.html`
 
