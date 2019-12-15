@@ -23,13 +23,18 @@ sap.ui.define([
 			UIComponent.prototype.init.apply(this, arguments);
 
 			// initialize the error handler with the component
-			this._oErrorHandler = new ErrorHandler(this);
+			//this._oErrorHandler = new ErrorHandler(this);
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
 
 			// create the views based on the url/hash
 			this.getRouter().initialize();
+
+			// set message model
+            var oMessageManager = sap.ui.getCore().getMessageManager();
+            this.setModel(oMessageManager.getMessageModel(), "message");
+
 		},
 
 		/**

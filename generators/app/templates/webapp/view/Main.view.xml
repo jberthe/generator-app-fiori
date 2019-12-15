@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="<%= fullNamespace  %>.controller.Object"
+	controllerName="<%= fullNamespace  %>.controller.Main"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:semantic="sap.f.semantic">
@@ -8,29 +8,26 @@
 		id="page"
 		headerPinnable="false"
 		toggleHeaderOnTitleClick="false"
-		busy="{objectView>/busy}"
-		busyIndicatorDelay="{objectView>/delay}">
+		showFooter="{=${message>/}.length > 0}">
 
 		<semantic:titleHeading>
 			<Title
-				text="{Name}"
+				text="{i18n>mainTitle}"
 				level="H2"/>
 		</semantic:titleHeading>
 
-		<semantic:headerContent>
-			<ObjectNumber
-				number="{
-					path: 'UnitNumber',
-					formatter: '.formatter.numberUnit'
-				}"
-				unit="{UnitOfMeasure}"
-			/>
-		</semantic:headerContent>
+		<semantic:content>
+            <Text text="add content here" />
+		</semantic:content>
 
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
 		</semantic:sendEmailAction>
 
+
+		<semantic:messagesIndicator>
+			<semantic:MessagesIndicator press="onMessagePopoverPress" visible="{=${message>/}.length > 0}" text="{=${message>/}.length}"/>
+		</semantic:messagesIndicator>
 
 	</semantic:SemanticPage>
 
