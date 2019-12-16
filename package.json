@@ -1,6 +1,6 @@
 {
   "name": "generator-app-fiori",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Generate Fiori Application based on Fiori Guidelines, conected to ABAP server and using the last UI5 Tooling.",
   "main": "generators/app/index.js",
   "scripts": {
@@ -15,7 +15,8 @@
   "dependencies": {
     "yeoman-generator": "^4.2.0",
     "diff": ">=3.5.0",
-    "deep-extend": ">=0.5.1"
+    "deep-extend": ">=0.5.1",
+    "glob": "^7.1.5"
   },
   "files": [
     "generators",
