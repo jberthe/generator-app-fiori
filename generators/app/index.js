@@ -80,7 +80,7 @@ module.exports = class extends Generator {
 
   writing() {
     this.options.oneTimeConfig = this.config.getAll();
-    this.options.oneTimeConfig.fullNamespace = this.options.oneTimeConfig.name_space + this.options.oneTimeConfig.projectname;
+    this.options.oneTimeConfig.fullNamespace = this.options.oneTimeConfig.name_space + "." + this.options.oneTimeConfig.projectname;
 
     glob.sync('**', {
       cwd: this.sourceRoot(),
