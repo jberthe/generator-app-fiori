@@ -2,12 +2,14 @@ sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
 	"./model/models",
-	"./controller/ErrorHandler"
-], function (UIComponent, Device, models, ErrorHandler) {
+	"./controller/ErrorHandler",
+	"../model/UIModel"
+], function (UIComponent, Device, models, ErrorHandler, UIModel) {
 	"use strict";
 
 	return UIComponent.extend("<%= fullNamespace  %>.Component", {
-
+                oUIModel: null,
+		
 		metadata : {
 			manifest: "json"
 		},
@@ -32,8 +34,11 @@ sap.ui.define([
 			this.getRouter().initialize();
 
 			// set message model
-            var oMessageManager = sap.ui.getCore().getMessageManager();
-            this.setModel(oMessageManager.getMessageModel(), "message");
+                        var oMessageManager = sap.ui.getCore().getMessageManager();
+                        this.setModel(oMessageManager.getMessageModel(), "message");
+			
+			this.oUIModel = new UIModel();
+			this.setModel(this.oUIModel.generate(), "ui");
 
 		},
 
@@ -68,8 +73,11 @@ sap.ui.define([
 				}
 			}
 			return this._sContentDensityClass;
+		},
+		
+		getUIModel: function(){
+			return this.oUIModel;	
 		}
-
 	});
 
 });
