@@ -20,19 +20,7 @@ sap.ui.define([
 		 * @public
 		 */
 		onInit: function () {
-			var oViewModel,
-				iOriginalBusyDelay;
-
-			// Model used to manipulate control states
-			oViewModel = new JSONModel({
-				worklistTableTitle: this.getResourceBundle().getText("worklistTableTitle"),
-				shareOnJamTitle: this.getResourceBundle().getText("worklistTitle"),
-				shareSendEmailSubject: this.getResourceBundle().getText("shareSendEmailWorklistSubject"),
-				shareSendEmailMessage: this.getResourceBundle().getText("shareSendEmailWorklistMessage", [location.href]),
-				tableNoDataText: this.getResourceBundle().getText("tableNoDataText"),
-				tableBusyDelay: 0
-			});
-			this.setModel(oViewModel, "ui");
+			
 
 		},
 
@@ -47,7 +35,7 @@ sap.ui.define([
 		 */
 		onNavBack: function () {
 			history.go(-1);
-		},
+		}
 
 		onMessagePopoverPress : function (oEvent) {
             this._getMessagePopover().openBy(oEvent.getSource());
