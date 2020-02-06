@@ -70,10 +70,11 @@ npm deploy
 - [X] BaseController.js
 - [X] QUnit
 - [X] XML Views only
-- [ ] OData messages hanlded
+- [X] OData messages handled
 - [ ] UIVer5 Testing
 - [ ] ES6 lint
 - [ ] Class template for OData call with promise
+- [X] Class template for UIModel
 
 
 ## References
