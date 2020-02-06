@@ -8,7 +8,7 @@ sap.ui.define([
 	"use strict";
 
 	return BaseController.extend("<%= fullNamespace  %>.controller.Main", {
-
+		oUIModel: null,
 		formatter: formatter,
 
 		/* =========================================================== */
@@ -20,8 +20,7 @@ sap.ui.define([
 		 * @public
 		 */
 		onInit: function () {
-			
-
+			this.oUIModel = this.getOwnerComponent().getUIModel();
 		},
 
 		/* =========================================================== */
