@@ -25,5 +25,5 @@ sap.ui.define(["sap/ui/base/Object", "sap/ui/model/json/JSONModel"], function (B
          this.oModel.setProperty("/mySample", sNewValue);
       }
 
-}
+}); });
  

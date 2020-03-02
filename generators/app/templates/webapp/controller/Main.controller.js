@@ -34,7 +34,7 @@ sap.ui.define([
 		 */
 		onNavBack: function () {
 			history.go(-1);
-		}
+		},
 
 		onMessagePopoverPress : function (oEvent) {
             this._getMessagePopover().openBy(oEvent.getSource());
