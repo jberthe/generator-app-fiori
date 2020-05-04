@@ -1,6 +1,6 @@
 sap.ui.define(["sap/ui/base/Object", "sap/ui/model/json/JSONModel"], function (BaseObject, JSONModel) { 
 
- BaseObject.extend("<%= fullNamespace  %>.UIModel", {
+ return BaseObject.extend("<%= fullNamespace  %>.UIModel", {
       oComponentCtrl: null,
       oModel: null,
       
