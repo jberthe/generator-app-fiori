@@ -71,7 +71,13 @@ module.exports = class extends Generator {
         type: "input",
         name: "password",
         message: "ABAP Server password"
-      }
+      },
+      {
+        type: "input",
+        name: "UI5Version",
+        message: "UI5 Version (for CDN lauchpad)",
+        default: "1.60.13"
+      },
     ]).then((answers) => {
       this.destinationRoot(`${answers.projectname}`);
       this.config.set(answers)

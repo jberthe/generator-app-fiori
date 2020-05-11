@@ -1,4 +1,4 @@
-specVersion: '1.0'
+specVersion: '2.0'
 metadata:
   name: <%= projectname %>
 type: application
@@ -16,6 +16,11 @@ server:
         baseUri: "<%= ODataServer %>/sap"
         auth: "<%= userID %>:<%= password %>"
         client: "<%= serverClient %>"
+    - name: ui5-middleware-livereload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp      
 builder:
   customTasks:
   - name: ui5-task-nwabap-deployer

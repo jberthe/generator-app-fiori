@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!-- Copyright (c) 2009-2017 SAP SE, All Rights Reserved -->
+<html class="sapUShellFullHeight">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <!--  version 0.2 -->
+        <title>Fiori Launchpad - Sandbox for application development</title>
+
+        <!-- iPhone splash screens -->
+        <link href="https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/splashscreen/320_x_460.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+        <link href="https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/splashscreen/640_x_920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+        <link href="https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/splashscreen/640_x_1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+        
+        <!-- iPad splash screens -->
+        <link href="https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/splashscreen/768_x_1004.png"  media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"  rel="apple-touch-startup-image">
+        <link href="https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/splashscreen/1024_x_748.png"  media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+        <link href="https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/splashscreen/1536_x_2008.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"  rel="apple-touch-startup-image">
+        <link href="https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/splashscreen/2048_x_1496.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+        <link id="icon-fonts-Fiori2" rel="stylesheet" type="text/css" href="https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/IconFonts.css"/>
+        <link id="Fiori2-loading" rel="stylesheet" type="text/css" href="https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/flower-standalone.css"/>
+        <script>
+            window["sap-ushell-config"] = {
+                defaultRenderer: "fiori2",
+                renderers: {
+                    fiori2: {
+                        componentData: {
+                            config: {
+                                enableSearch: false,
+                                enableUserDefaultParameters: true,
+                                rootIntent: "Shell-home"
+                            }
+                        }
+                    }
+                },
+                services: {
+                    NavTargetResolution: {
+                        config: {
+                            "runStandaloneAppFolderWhitelist": {
+                                "*" : true
+                            },
+                            "allowTestUrlComponentConfig" : true,
+                            "enableClientSideTargetResolution": true
+                        }
+                    },
+                    SupportTicket: {
+                        // switched off as the local adapter is not connected to a ticket system
+                        config: {
+                            enabled: false
+                        }
+                    },
+                    EndUserFeedback: {
+                        adapter: {
+                            config: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    SmartNavigation: {
+                        config: {
+                            isTrackingEnabled: true
+                        }
+                    }
+                },
+                applications: {
+	                "Applcation-display": {
+                        additionalInformation: "SAPUI5.Component=<%= fullNamespace  %>",
+                        applicationType: "SAPUI5",
+                        url: "../",
+                        title: "<%= projectname %>",                
+                        description: "Configuration"
+	                }
+                },
+                
+            
+            };
+        </script>
+        <script id="sap-ushell-bootstrap" src="https://sapui5.hana.ondemand.com/<%= UI5Version %>/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+
+        <script id="sap-ui-bootstrap"
+            src="https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap-ui-core.js"
+            data-sap-ui-evt-oninit="main();"
+            data-sap-ui-libs="sap.m"
+            data-sap-ui-theme="sap_belize"
+            data-sap-ui-compatVersion="1.16"
+            data-sap-ui-xx-bindingSyntax="complex">
+        </script>
+
+        <script src="https://sapui5.hana.ondemand.com/<%= UI5Version %>/test-resources/sap/ushell/bootstrap/standalone.js"></script>
+
+        <script type="text/javascript">
+
+        jQuery.sap.setIcons({
+            'phone': 'https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/launchicons/57_iPhone_Desktop_Launch.png',
+            'phone@2': 'https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/launchicons/114_iPhone-Retina_Web_Clip.png',
+            'tablet': 'https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/launchicons/72_iPad_Desktop_Launch.png',
+            'tablet@2': 'https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/launchicons/144_iPad_Retina_Web_Clip.png',
+            'favicon': 'https://sapui5.hana.ondemand.com/<%= UI5Version %>/resources/sap/ushell/themes/base/img/launchpad_favicon.ico',
+            'precomposed': true
+        });
+
+        /**
+         * Main method to be executed once SAPUI5 has been initialized.
+         */
+        function main() {
+            "use strict";
+            /*global sap */
+
+            // load and register Fiori2 icon font
+            jQuery.sap.require("sap.ushell.iconfonts");
+            jQuery.sap.require("sap.ushell.services.AppConfiguration");
+            sap.ushell.iconfonts.registerFiori2IconFont();
+
+            // clean fiori loading screen markup before placing main content
+            var oContent = sap.ushell.Container.createRenderer();
+            jQuery("#canvas").empty();
+            oContent.placeAt("canvas");
+        }
+        </script>
+    </head>
+
+    <body class="sapUiBody sapUShellFullHeight" role="application">
+        <div id="canvas" class="sapUShellFullHeight">
+            <!--  the Fiori2 loading screen for different browsers (as SAPUI5 is not loaded yet, will be replaced by Launchpad):
+                * in pure HTML with CSS animation for modern browsers
+                * animated gif image for <=IE9 (IE10+ doesn't support conditional comments)
+            -->
+            <!--[if IE]>
+                <div id="fiori2-startup-flower" class="sandbox">
+                    <img src="resources/sap/ushell/themes/base/img/flower_anim.gif" />
+                </div>
+            <![endif]-->
+            <!--[if !IE]> -->
+            <div id="fiori2-startup-flower" class="sandbox">
+                <div class="fiori2-blossom">
+                    <div class="fiori2-leafContainer fiori2-leafContainer1">
+                        <div class="fiori2-leaf fiori2-leaf1"></div>
+                    </div>
+                    <div class="fiori2-leafContainer fiori2-leafContainer2">
+                        <div class="fiori2-leaf fiori2-leaf2"></div>
+                    </div>
+                    <div class="fiori2-leafContainer fiori2-leafContainer3">
+                        <div class="fiori2-leaf fiori2-leaf3"></div>
+                    </div>
+                    <div class="fiori2-leafContainer fiori2-leafContainer4">
+                        <div class="fiori2-leaf fiori2-leaf4"></div>
+                    </div>
+                    <div class="fiori2-leafContainer fiori2-leafContainer5">
+                        <div class="fiori2-leaf fiori2-leaf5"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- <![endif] -->
+        </div>
+    </body>
+</html>

@@ -3,24 +3,26 @@
     "version": "0.0.1",
     "private": true,
     "devDependencies": {
-      "@ui5/cli": "1.7.0",
-      "@ui5/uiveri5": "*",
-      "ui5-middleware-livereload": "^0.1.4",
-      "ui5-middleware-proxy-basicauth": "0.0.5",
+      "@ui5/cli": "2.2.0",
+      "rimraf": "^3.0.0",
+      "ui5-middleware-livereload": "*",
+      "ui5-middleware-proxy-basicauth": "^0.0.5",
       "ui5-middleware-servestatic": "^0.1.2",
-      "ui5-task-nwabap-deployer": "^1.0.4",
+      "nwabap-ui5uploader": "*",
       "eslint": "^6.2.2"
     },
     "scripts": {
-      "deploy": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
+      "deploy": "npx nwabap upload",
       "lint": "eslint webapp",
-      "start": "ui5 serve --open Launchpad.html"
+      "start": "ui5 serve --open flpSandbox.html",
+      "startCDN": "ui5 serve --open test/flpSandboxCDN.html",
+      "build": "rimraf dist && ui5 build -a"
     },
     "ui5": {
       "dependencies": [
         "ui5-middleware-proxy-basicauth",
         "ui5-middleware-servestatic",
-        "ui5-task-nwabap-deployer"
+        "ui5-middleware-livereload"
       ]
     },
     "main": "index.js",
