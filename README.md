@@ -45,7 +45,14 @@ We assume that you execute the generator in the following environement :
 ![](./doc/launch.gif)
 
 #### Deploy on ABAP Server
+
+> npm run build
+> npm run deploy
+
 This command will build your UI5 application into `dist` folder, and then deploy into your ABAP system.
+
+To deploy it correctly, you have to change the file *.nwabaprc* file in the root folder. All the **TODO** statements should be replaced.
+
 ##### Configuration
 Before launching the script please update your `ui5.yaml` file in the section `ui5` :
 ```yaml
@@ -72,7 +79,7 @@ npm deploy
 - [X] XML Views only
 - [X] OData messages handled
 - [ ] ES6 lint
-- [ ] Class template for OData call with promise
+- [X] Class template for OData call with promise
 - [X] Class template for UIModel
 
 
@@ -89,9 +96,14 @@ I wanted to fork the Easy-ui5 generator but the structre was not what I expected
 
 * Clear i18n files
 * Add auto UI5 Reloader
-* Add UI5 Tooling 2.0
+* Add UI5 Tooling 2.2
+    * Update spec file to 2.2
+    * ui5@cli 2.4.*
 * Add LaunchpadCDN.html
 * Add UI5 version selection
 * Rename : Launchpad.html --> flpLaunchpad.html
 * Add new script
     * *startCDN* : launch test/flpLaunchpadCDN.html
+* Corr. UIModel namespace
+* Add class for OData call with Promise
+* Add UI5 serve live reload

@@ -15,6 +15,7 @@
  */
 
 var Generator = require('yeoman-generator');
+var $ = require("jquery");
 const glob = require('glob');
 
 module.exports = class extends Generator {
@@ -27,7 +28,41 @@ module.exports = class extends Generator {
   }
 
   async prompting() {
-    const answers = await this.prompt([{
+    const done = this.async();
+    this.full_answer = {};
+
+    let finalQuestions = () => {
+      return this.prompt([{
+        type: "input",
+        name: "ODataServer",
+        message: "ABAP Server uri",
+        default: "https://my.server.local:8001"
+      },
+        {
+          type: "input",
+          name: "ODataServiceURL",
+          message: "ODATA Service uri",
+          default: "/sap/opu/odata/sap/MyService"
+        },
+        {
+          type: "input",
+          name: "serverClient",
+          message: "ABAP Server client",
+          default: "100"
+        },
+        {
+          type: "input",
+          name: "userID",
+          message: "ABAP Server user ID"
+        },
+        {
+          type: "input",
+          name: "password",
+          message: "ABAP Server password"
+        }]);
+    };
+
+    this.prompt([{
         type: "input",
         name: "projectname",
         message: "Your project name"
@@ -39,49 +74,72 @@ module.exports = class extends Generator {
         default: "ch.my.company.module"
       },
       {
-        type: "input",
-        name: "ui5Path",
-        message: "Local UI5 Path",
-        default: "../ui5"
-      },
-      {
-        type: "input",
-        name: "ODataServer",
-        message: "ABAP Server uri",
-        default: "https://my.server.local:8001"
-      },
-      {
-        type: "input",
-        name: "ODataServiceURL",
-        message: "ODATA Service uri",
-        default: "/sap/opu/odata/sap/MyService"
-      },
-      {
-        type: "input",
-        name: "serverClient",
-        message: "ABAP Server client",
-        default: "100"
-      },
-      {
-        type: "input",
-        name: "userID",
-        message: "ABAP Server user ID"
-      },
-      {
-        type: "input",
-        name: "password",
-        message: "ABAP Server password"
-      },
-      {
-        type: "input",
-        name: "UI5Version",
-        message: "UI5 Version (for CDN lauchpad)",
-        default: "1.60.13"
-      },
-    ]).then((answers) => {
-      this.destinationRoot(`${answers.projectname}`);
-      this.config.set(answers)
+        type: "list",
+        name: "is_local_library",
+        message: "Are you using a local library or CDN?",
+        default: "CDN",
+        choices: ["CDN", "Local library"]
+      }
+    ]).then((sub_answers) => {
+      this.full_answer["projectname"] = sub_answers.projectname;
+      this.full_answer["name_space"] = sub_answers.name_space;
+
+      if (sub_answers.is_local_library === "CDN"){
+        this.full_answer["isCDN"] = true;
+        this.prompt([{
+          type: "list",
+          name: "UI5Version",
+          message: "UI5 Version (for CDN lauchpad)",
+          choices: ["1.78.11", "1.71.26", "1.60.31", "1.52.46", "1.38.47"]
+        }]).then((sub_answers) => {
+          this.full_answer["UI5Version"] = sub_answers.UI5Version;
+          this.full_answer["ui5Path"] = "";
+
+          finalQuestions().then((answers) => {
+            for (var myKey in answers) {
+              this.full_answer[myKey] = answers[myKey];
+            }
+
+            this._loadConfiguration(this.full_answer).then(() => {
+              done();
+            });
+          });
+        });
+      } else {
+        this.prompt([{
+          type: "input",
+          name: "ui5Path",
+          message: "Local UI5 Path",
+          default: "../ui5"
+        }]).then((sub_answers) => {
+          this.full_answer["ui5Path"] = sub_answers.ui5Path;
+          this.full_answer["UI5Version"] = "1.60.31";
+
+          finalQuestions().then((answers) => {
+            for (var myKey in answers) {
+              this.full_answer[myKey] = answers[myKey];
+            }
+
+           
+            this._loadConfiguration(this.full_answer).then(() => {
+              done();
+            });
+
+          });
+        });
+      }
+      });
+ 
+  }
+
+  _loadConfiguration(answer){
+    return new Promise((resolve, reject) => {
+     
+      this.destinationRoot(`${answer.projectname}`);
+      this.config.set(this.full_answer);
+      resolve();
     });
+   
   }
 
   writing() {

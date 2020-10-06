@@ -3,12 +3,12 @@
     "version": "0.0.1",
     "private": true,
     "devDependencies": {
-      "@ui5/cli": "2.2.0",
+      "@ui5/cli": "2.4.0",
       "rimraf": "^3.0.0",
-      "ui5-middleware-livereload": "*",
-      "ui5-middleware-proxy-basicauth": "^0.0.5",
-      "ui5-middleware-servestatic": "^0.1.2",
-      "nwabap-ui5uploader": "*",
+      "ui5-middleware-livereload": "0.4.3",
+      "ui5-middleware-proxy-basicauth": "^0.0.6",
+      "ui5-middleware-servestatic": "^0.3.3",
+      "ui5-task-nwabap-deployer": "1.0.15",
       "eslint": "^6.2.2"
     },
     "scripts": {
@@ -22,7 +22,8 @@
       "dependencies": [
         "ui5-middleware-proxy-basicauth",
         "ui5-middleware-servestatic",
-        "ui5-middleware-livereload"
+        "ui5-middleware-livereload",
+        "ui5-task-nwabap-deployer"
       ]
     },
     "main": "index.js",

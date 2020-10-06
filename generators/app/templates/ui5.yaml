@@ -1,14 +1,19 @@
-specVersion: '2.0'
+specVersion: '2.2'
 metadata:
   name: <%= projectname %>
 type: application
+resources:
+  configuration:
+    propertiesFileSourceEncoding: UTF-8
 server: 
   customMiddleware:
+  <% if (ui5Path) { %>
     - name: ui5-middleware-servestatic
       afterMiddleware: compression
       mountPath: /ui5
       configuration:
         rootPath: "<%= ui5Path %>"
+  <% } %>
     - name: ui5-middleware-proxy-basicauth
       afterMiddleware: compression
       mountPath: /sap
@@ -22,6 +27,8 @@ server:
         port: 35729
         path: webapp      
 builder:
+  cachebuster:
+    signatureType: hash
   customTasks:
   - name: ui5-task-nwabap-deployer
     afterTask: generateVersionInfo

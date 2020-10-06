@@ -1,15 +1,16 @@
 sap.ui.define([
 	"./BaseController",
-	"sap/ui/model/json/JSONModel",
 	"../model/formatter",
-	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator"
-], function (BaseController, JSONModel, formatter, Filter, FilterOperator) {
+	"../model/ODataModel"
+], function (BaseController,
+	formatter,
+	ODataModel) {
 	"use strict";
 
 	return BaseController.extend("<%= fullNamespace  %>.controller.Main", {
 		oUIModel: null,
 		formatter: formatter,
+		oOdataModel: null,
 
 		/* =========================================================== */
 		/* lifecycle methods                                           */
@@ -21,6 +22,7 @@ sap.ui.define([
 		 */
 		onInit: function () {
 			this.oUIModel = this.getOwnerComponent().getUIModel();
+			this.oOdataModel = new ODataModel(this);
 		},
 
 		/* =========================================================== */

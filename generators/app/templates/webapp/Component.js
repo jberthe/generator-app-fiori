@@ -8,9 +8,9 @@ sap.ui.define([
 	"use strict";
 
 	return UIComponent.extend("<%= fullNamespace  %>.Component", {
-                oUIModel: null,
-		
-		metadata : {
+		oUIModel: null,
+
+		metadata: {
 			manifest: "json"
 		},
 
@@ -20,7 +20,7 @@ sap.ui.define([
 		 * @public
 		 * @override
 		 */
-		init : function () {
+		init: function () {
 			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 
@@ -34,9 +34,9 @@ sap.ui.define([
 			this.getRouter().initialize();
 
 			// set message model
-                        var oMessageManager = sap.ui.getCore().getMessageManager();
-                        this.setModel(oMessageManager.getMessageModel(), "message");
-			
+			var oMessageManager = sap.ui.getCore().getMessageManager();
+			this.setModel(oMessageManager.getMessageModel(), "message");
+
 			this.oUIModel = new UIModel();
 			this.setModel(this.oUIModel.generate(), "ui");
 
@@ -48,7 +48,7 @@ sap.ui.define([
 		 * @public
 		 * @override
 		 */
-		destroy : function () {
+		destroy: function () {
 			this._oErrorHandler.destroy();
 			// call the base component's destroy function
 			UIComponent.prototype.destroy.apply(this, arguments);
@@ -60,7 +60,7 @@ sap.ui.define([
 		 * @public
 		 * @return {string} css class, either 'sapUiSizeCompact' or 'sapUiSizeCozy' - or an empty string if no css class should be set
 		 */
-		getContentDensityClass : function() {
+		getContentDensityClass: function () {
 			if (this._sContentDensityClass === undefined) {
 				// check whether FLP has already set the content density class; do nothing in this case
 				if (document.body.classList.contains("sapUiSizeCozy") || document.body.classList.contains("sapUiSizeCompact")) {
@@ -74,9 +74,9 @@ sap.ui.define([
 			}
 			return this._sContentDensityClass;
 		},
-		
-		getUIModel: function(){
-			return this.oUIModel;	
+
+		getUIModel: function () {
+			return this.oUIModel;
 		}
 	});
 
