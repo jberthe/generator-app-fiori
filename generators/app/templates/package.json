@@ -9,7 +9,7 @@
       "ui5-middleware-proxy-basicauth": "^0.0.6",
       "ui5-middleware-servestatic": "^0.3.3",
       "ui5-task-nwabap-deployer": "1.0.15",
-      "eslint": "^6.2.2"
+      "eslint": "7.10.0"
     },
     "scripts": {
       "deploy": "npx nwabap upload",

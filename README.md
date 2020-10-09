@@ -78,7 +78,7 @@ npm deploy
 - [X] QUnit
 - [X] XML Views only
 - [X] OData messages handled
-- [ ] ES6 lint
+- [X] ES6 lint
 - [X] Class template for OData call with promise
 - [X] Class template for UIModel
 
@@ -92,6 +92,9 @@ I based my work on multiple sources.
 I wanted to fork the Easy-ui5 generator but the structre was not what I expected. I do not want the abillity to add HTML or JS view. The application I wanted to have as template should have App.view as starting point. Furthermore, I wanted to used the semantic page to build my application.
 
 ## Release
+### Version 1.2.0
+* Add ES6 lint checkup
+
 ### Version 1.1.0
 
 * Clear i18n files

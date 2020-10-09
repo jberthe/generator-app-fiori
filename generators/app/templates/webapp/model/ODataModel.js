@@ -17,7 +17,7 @@ sap.ui.define(["sap/ui/base/Object"], function (BaseObject) {
           error: (error) => {
             reject(error);
           }
-        })
+        });
       });
     }
 
