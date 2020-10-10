@@ -14,13 +14,15 @@ server:
       configuration:
         rootPath: "<%= ui5Path %>"
   <% } %>
+  <% if (ODataConf) { %>
     - name: ui5-middleware-proxy-basicauth
       afterMiddleware: compression
       mountPath: /sap
       configuration:
-        baseUri: "<%= ODataServer %>/sap"
-        auth: "<%= userID %>:<%= password %>"
-        client: "<%= serverClient %>"
+        baseUri: "<%= ODataConf.ODataServer %>/sap"
+        auth: "<%= ODataConf.userID %>:<%= ODataConf.password %>"
+        client: "<%= ODataConf.serverClient %>"
+    <% } %>
     - name: ui5-middleware-livereload
       afterMiddleware: compression
       configuration:
@@ -30,6 +32,7 @@ builder:
   cachebuster:
     signatureType: hash
   customTasks:
+    <% if (ODataConf) { %>
   - name: ui5-task-nwabap-deployer
     afterTask: generateVersionInfo
     configuration: 
@@ -37,10 +40,10 @@ builder:
         path: dist
         pattern: "**/*.*"
       connection:
-        server: <%= ODataServer %>  
+        server: <%= ODataConf.ODataServer %>  
       authentication:
-        user: <%= userID %>
-        password: <%= password %>
+        user: <%= ODataConf.userID %>
+        password: <%= ODataConf.password %>
       ui5:
         language: EN/FR/..
         package: TODO
@@ -48,3 +51,5 @@ builder:
         bspContainerText: UI5 Upload
         transportNo: TODO
         calculateApplicationIndex: true      
+
+         <% } %>

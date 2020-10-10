@@ -12,14 +12,16 @@
 		},
 		"resources": "resources.json",
 		"dataSources": {
+			<% if(ODataConf) { %>
 			"mainService": {
-				"uri": "<%= ODataServiceURL  %>",
+				"uri": "<%= ODataConf.ODataServiceURL  %>",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
 					"localUri": "localService/metadata.xml"
 				}
 			}
+			<% } %>
 		}
 	},
 

@@ -98,6 +98,11 @@ I wanted to fork the Easy-ui5 generator but the structre was not what I expected
 * Add test script which launch QUnit
 * Include dot files (e.g. .gitignore, .elsintrc, ...)
 * @ui5/cli: version 2.4.5  
+* Prompting:
+    * Password is hidden
+    * Some answers are stored such as server, client, password (hidden) ....
+    * Option to escape the OData service
+    * Changing the layout
 
 ### Version 1.1.0
 
