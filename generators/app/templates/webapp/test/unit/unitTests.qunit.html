@@ -2,23 +2,23 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Unit tests for Worklist</title>
+	<title>Unit tests for <%= projectname %></title>
 
 	<script id="sap-ui-bootstrap"
-			src="../../resources/sap-ui-core.js"
+			src="https://ui5.sap.com/<%= UI5Version %>/resources/sap-ui-core.js"
 			data-sap-ui-resourceroots='{
-				"sap.ui.demo.worklist": "../../"
+				"<%= name_space %>": "../../"
 			}'
 			data-sap-ui-async="true">
 	</script>
 
-	<link rel="stylesheet" type="text/css" href="../../resources/sap/ui/thirdparty/qunit-2.css">
+	<link rel="stylesheet" type="text/css" href="https://ui5.sap.com/<%= UI5Version %>/resources/sap/ui/thirdparty/qunit-2.css">
 
-	<script src="../../resources/sap/ui/thirdparty/qunit-2.js"></script>
-	<script src="../../resources/sap/ui/qunit/qunit-junit.js"></script>
-	<script src="../../resources/sap/ui/qunit/qunit-coverage.js"></script>
-	<script src="../../resources/sap/ui/thirdparty/sinon.js"></script>
-	<script src="../../resources/sap/ui/thirdparty/sinon-qunit.js"></script>
+	<script src="https://ui5.sap.com/<%= UI5Version %>/resources/sap/ui/thirdparty/qunit-2.js"></script>
+	<script src="https://ui5.sap.com/<%= UI5Version %>/resources/sap/ui/qunit/qunit-junit.js"></script>
+	<script src="https://ui5.sap.com/<%= UI5Version %>/resources/sap/ui/qunit/qunit-coverage.js"></script>
+	<script src="https://ui5.sap.com/<%= UI5Version %>/resources/sap/ui/thirdparty/sinon.js"></script>
+	<script src="https://ui5.sap.com/<%= UI5Version %>/resources/sap/ui/thirdparty/sinon-qunit.js"></script>
 
 	<script src="unitTests.qunit.js"></script>
 </head>

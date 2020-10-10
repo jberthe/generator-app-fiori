@@ -1,7 +1,7 @@
 /*global QUnit*/
 
 sap.ui.define([
-	"sap/ui/demo/worklist/model/formatter"
+	"<%= name_space_slash %>/model/formatter"
 ], function (formatter) {
 	"use strict";
 

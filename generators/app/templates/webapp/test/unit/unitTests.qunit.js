@@ -5,7 +5,7 @@ sap.ui.getCore().attachInit(function () {
 	"use strict";
 
 	sap.ui.require([
-		"sap/ui/demo/worklist/test/unit/AllTests"
+		"<%= name_space_slash %>/test/unit/AllTests"
 	], function () {
 		QUnit.start();
 	});

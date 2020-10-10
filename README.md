@@ -94,6 +94,10 @@ I wanted to fork the Easy-ui5 generator but the structre was not what I expected
 ## Release
 ### Version 1.2.0
 * Add ES6 lint checkup
+* Corr. QUnit directory
+* Add test script which launch QUnit
+* Include dot files (e.g. .gitignore, .elsintrc, ...)
+* @ui5/cli: version 2.4.5  
 
 ### Version 1.1.0
 

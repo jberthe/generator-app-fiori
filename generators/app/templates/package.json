@@ -1,10 +1,10 @@
 {
     "name": "<%= projectname %>",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "private": true,
     "devDependencies": {
-      "@ui5/cli": "2.4.0",
-      "rimraf": "^3.0.0",
+      "@ui5/cli": "2.4.5",
+      "rimraf": "^3.0.2",
       "ui5-middleware-livereload": "0.4.3",
       "ui5-middleware-proxy-basicauth": "^0.0.6",
       "ui5-middleware-servestatic": "^0.3.3",
@@ -16,7 +16,8 @@
       "lint": "eslint webapp",
       "start": "ui5 serve --open flpSandbox.html",
       "startCDN": "ui5 serve --open test/flpSandboxCDN.html",
-      "build": "rimraf dist && ui5 build -a"
+      "build": "rimraf dist && ui5 build -a",
+      "test": "ui5 serve --open test/unit/unitTests.qunit.html"
     },
     "ui5": {
       "dependencies": [

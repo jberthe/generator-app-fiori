@@ -1,7 +1,7 @@
 /*global QUnit*/
 
 sap.ui.define([
-	"sap/ui/demo/worklist/model/models",
+	"<%= name_space_slash %>/model/models",
 	"sap/ui/Device"
 ], function (models, Device) {
 	"use strict";

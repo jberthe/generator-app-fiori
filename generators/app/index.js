@@ -83,6 +83,7 @@ module.exports = class extends Generator {
     ]).then((sub_answers) => {
       this.full_answer["projectname"] = sub_answers.projectname;
       this.full_answer["name_space"] = sub_answers.name_space;
+      this.full_answer["name_space_slash"] = sub_answers.name_space.split(".").join("/");
 
       if (sub_answers.is_local_library === "CDN"){
         this.full_answer["isCDN"] = true;
@@ -146,6 +147,7 @@ module.exports = class extends Generator {
     this.options.oneTimeConfig = this.config.getAll();
     this.options.oneTimeConfig.fullNamespace = this.options.oneTimeConfig.name_space + "." + this.options.oneTimeConfig.projectname;
 
+    
     glob.sync('**', {
       cwd: this.sourceRoot(),
       nodir: true
@@ -155,6 +157,17 @@ module.exports = class extends Generator {
 
       this.fs.copyTpl(sOrigin, sTarget, this.options.oneTimeConfig);
     });
+
+    glob.sync('**/.*', {
+      cwd: this.sourceRoot(),
+      nodir: true
+    }).forEach((file) => {
+      const sOrigin = this.templatePath(file);
+      const sTarget = this.destinationPath(file.replace(/^_/, '').replace(/\/_/, '/'));
+
+      this.fs.copyTpl(sOrigin, sTarget, this.options.oneTimeConfig);
+    });
+
 
   }
 
