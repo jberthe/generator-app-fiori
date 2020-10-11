@@ -103,6 +103,7 @@ I wanted to fork the Easy-ui5 generator but the structre was not what I expected
     * Some answers are stored such as server, client, password (hidden) ....
     * Option to escape the OData service
     * Changing the layout
+* Security : put all user and password in *.env* file
 
 ### Version 1.1.0
 

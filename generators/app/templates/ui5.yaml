@@ -20,7 +20,6 @@ server:
       mountPath: /sap
       configuration:
         baseUri: "<%= ODataConf.ODataServer %>/sap"
-        auth: "<%= ODataConf.userID %>:<%= ODataConf.password %>"
         client: "<%= ODataConf.serverClient %>"
     <% } %>
     - name: ui5-middleware-livereload
@@ -41,13 +40,10 @@ builder:
         pattern: "**/*.*"
       connection:
         server: <%= ODataConf.ODataServer %>  
-      authentication:
-        user: <%= ODataConf.userID %>
-        password: <%= ODataConf.password %>
       ui5:
-        language: EN/FR/..
-        package: TODO
-        bspContainer: TODO
+        language: EN
+        package: $TMP
+        bspContainer: ZTODO
         bspContainerText: UI5 Upload
         transportNo: TODO
         calculateApplicationIndex: true      
