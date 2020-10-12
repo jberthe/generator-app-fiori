@@ -8,7 +8,7 @@
 		id="page"
 		headerPinnable="false"
 		toggleHeaderOnTitleClick="false"
-		showFooter="{=${message>/}.length > 0}">
+		showFooter="true">
 
 		<semantic:titleHeading>
 			<Title
@@ -21,13 +21,18 @@
 		</semantic:content>
 
 		<semantic:sendEmailAction>
-			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+			<semantic:SendEmailAction id="shareEmail" />
 		</semantic:sendEmailAction>
 
 
 		<semantic:messagesIndicator>
-			<semantic:MessagesIndicator press="onMessagePopoverPress" visible="{=${message>/}.length > 0}" text="{=${message>/}.length}"/>
+			<semantic:MessagesIndicator press="onMessagePopoverPress" visible="{=${message>/}.length > 0}" />
 		</semantic:messagesIndicator>
+
+	<semantic:footerCustomActions>
+			<Button text="CustomFooterBtn" press="onPress"/>
+			<OverflowToolbarButton icon="sap-icon://settings" text="Settings" press="onPress"/>
+		</semantic:footerCustomActions>
 
 	</semantic:SemanticPage>
 
