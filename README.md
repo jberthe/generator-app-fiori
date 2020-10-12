@@ -51,15 +51,15 @@ We assume that you execute the generator in the following environement :
 
 This command will build your UI5 application into `dist` folder, and then deploy into your ABAP system.
 
-To deploy it correctly, you have to change the file *.nwabaprc* file in the root folder. All the **TODO** statements should be replaced.
+All the crednetials should be done in the fil *.env*. It should be ignore by the git engine for security purpose. All the **TODO** statements should be replaced.
 
 ##### Configuration
 Before launching the script please update your `ui5.yaml` file in the section `ui5` :
 ```yaml
 ui5:
-    language: EN/FR/..
-    package: TODO
-    bspContainer: TODO
+    language: EN
+    package: $TMP
+    bspContainer: ZTODO
     bspContainerText: UI5 Upload
     transportNo: TODO
     calculateApplicationIndex: true
