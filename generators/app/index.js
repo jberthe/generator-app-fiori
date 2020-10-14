@@ -49,9 +49,9 @@ module.exports = class extends Generator {
         this.log.write('\r\n****                             ****\r\n');
 
         return this.prompt([{
-          type: "input",
+          type: "list",
           name: "isODataConf",
-          message: "Doyou want to configure the OData service?",
+          message: "Do you want to configure the OData service?",
           default: "Yes",
           choices: ["Yes", "No"],
           store: true

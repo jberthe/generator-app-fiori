@@ -95,6 +95,7 @@ I wanted to fork the Easy-ui5 generator but the structre was not what I expected
 ### Version 1.2.1
 * Bug: .env file not created
 * Some minor correction
+* Corr: prompting OData question like a list
 
 ### Version 1.2.0
 * Add ES6 lint checkup
