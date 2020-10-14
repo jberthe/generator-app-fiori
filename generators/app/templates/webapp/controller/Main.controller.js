@@ -40,14 +40,16 @@ sap.ui.define([
 
 		onMessagePopoverPress : function (oEvent) {
             this._getMessagePopover().openBy(oEvent.getSource());
-		}
+		},
 		
 
 		/* =========================================================== */
 		/* internal methods                                            */
 		/* =========================================================== */
 
-		
+		onPress: function(oEvent){
+
+		}
 
 	});
 });
