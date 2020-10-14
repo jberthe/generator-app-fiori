@@ -1,6 +1,6 @@
 {
   "name": "generator-app-fiori",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Generate Fiori Application based on Fiori Guidelines, conected to ABAP server and using the last UI5 Tooling.",
   "main": "generators/app/index.js",
   "scripts": {
