@@ -82,6 +82,13 @@ npm deploy
 - [X] Class template for OData call with promise
 - [X] Class template for UIModel
 
+## Others Commands
+### Change UI5 version
+With that command, if you have configured the CDN approach, then you will be able to modify the version of your file.
+
+ ```sh
+myRepo> npm yo:changeui5version
+```
 
 ## References
 I based my work on multiple sources. 
@@ -92,6 +99,14 @@ I based my work on multiple sources.
 I wanted to fork the Easy-ui5 generator but the structre was not what I expected. I do not want the abillity to add HTML or JS view. The application I wanted to have as template should have App.view as starting point. Furthermore, I wanted to used the semantic page to build my application.
 
 ## Release
+### Version 1.3.0
+* Upd: Prompting CDN UI5 version add other to be able to use another library
+* Add: command changeui5version
+ 
+
+### Version 1.2.2
+* Corr: XML View error for parameter unknown
+
 ### Version 1.2.1
 * Bug: .env file not created
 * Some minor correction

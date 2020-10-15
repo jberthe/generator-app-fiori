@@ -18,6 +18,7 @@ var Generator = require('yeoman-generator');
 var $ = require("jquery");
 const glob = require('glob');
 
+let tExcludeFileCDN = ["webapp/flpSandbox.html", "webapp/index.html"];
 
 module.exports = class extends Generator {
 
@@ -193,22 +194,14 @@ module.exports = class extends Generator {
       cwd: this.sourceRoot(),
       nodir: true
     }).forEach((file) => {
-      const sOrigin = this.templatePath(file);
-      const sTarget = this.destinationPath(file.replace(/^_/, '').replace(/\/_/, '/'));
+      if (!this.options.oneTimeConfig.isCDN || (this.options.oneTimeConfig.isCDN && !tExcludeFileCDN.find((elem) => elem === file))) {
 
-      this.fs.copyTpl(sOrigin, sTarget, this.options.oneTimeConfig);
+        const sOrigin = this.templatePath(file);
+        const sTarget = this.destinationPath(file.replace(/^_/, '').replace(/\/_/, '/'));
+
+        this.fs.copyTpl(sOrigin, sTarget, this.options.oneTimeConfig);
+      }
     });
-
-    glob.sync('**/.*', {
-      cwd: this.sourceRoot(),
-      nodir: true
-    }).forEach((file) => {
-      const sOrigin = this.templatePath(file);
-      const sTarget = this.destinationPath(file.replace(/^_/, '').replace(/\/_/, '/'));
-
-      this.fs.copyTpl(sOrigin, sTarget, this.options.oneTimeConfig);
-    });
-
 
   }
 
