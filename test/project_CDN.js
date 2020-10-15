@@ -18,8 +18,8 @@ const helpers = require('yeoman-test');
 const path = require('path');
 const assert = require('yeoman-assert');
 
-describe('backbone:app', function () {
-    it("Genertate application CDN", () => {
+describe('CDN Project without OData service', function () {
+    it("Genertate application", () => {
         
 
         return helpers.run(path.join(__dirname, '../generators/app'))
@@ -91,11 +91,12 @@ describe('backbone:app', function () {
         assert.noFileContent("ui5.yaml", "mountPath: /ui5");
     
     });
-
+    
     it("UI5 Library should be", () => {
         assert.fileContent("webapp/test/flpSandboxCDN.html", "https://ui5.sap.com/1.71.26/");
-        assert.noFileContent("ui5.yaml", "mountPath: /ui5");
-
     });
-   
+    
+    it("Service OData shouldn't be here", () => {
+     
+    });
 });
