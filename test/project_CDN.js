@@ -86,5 +86,16 @@ describe('backbone:app', function () {
         assert.fileContent('package.json', '"test"');
     });
 
+    it("ui5.yaml should not contains.", () => {
+        assert.noFileContent("ui5.yaml", "ui5-middleware-servestatic");
+        assert.noFileContent("ui5.yaml", "mountPath: /ui5");
+    
+    });
+
+    it("UI5 Library should be", () => {
+        assert.fileContent("webapp/test/flpSandboxCDN.html", "https://ui5.sap.com/1.71.26/");
+        assert.noFileContent("ui5.yaml", "mountPath: /ui5");
+
+    });
    
 });

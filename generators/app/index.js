@@ -125,6 +125,7 @@ module.exports = class extends Generator {
 
         if (sub_answers.is_local_library === "CDN") {
           this.full_answer["isCDN"] = true;
+          this.log.write('\r\nThe UI5 version can be change later by the command : app-fiori:changeui5version\r\n');
           this.prompt([{
             type: "list",
             name: "UI5Version",
