@@ -102,6 +102,7 @@ I wanted to fork the Easy-ui5 generator but the structre was not what I expected
 ### Version 1.3.0
 * Upd: Prompting CDN UI5 version add other to be able to use another library
 * Add: command changeui5version
+* Fix: Odata mainservice when no servic prompting
  
 
 ### Version 1.2.2

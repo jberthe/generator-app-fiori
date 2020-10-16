@@ -97,6 +97,6 @@ describe('CDN Project without OData service', function () {
     });
     
     it("Service OData shouldn't be here", () => {
-     
+        assert.noFileContent("webapp/manifest.json", '"mainService": {');
     });
 });

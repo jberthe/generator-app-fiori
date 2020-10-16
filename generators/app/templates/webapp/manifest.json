@@ -12,7 +12,7 @@
 		},
 		"resources": "resources.json",
 		"dataSources": {
-			<% if(ODataConf) { %>
+			<% if(ODataConf && ODataConf.ODataServiceURL) { %>
 			"mainService": {
 				"uri": "<%= ODataConf.ODataServiceURL  %>",
 				"type": "OData",
