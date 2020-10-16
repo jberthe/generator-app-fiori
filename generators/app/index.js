@@ -17,6 +17,8 @@
 var Generator = require('yeoman-generator');
 var $ = require("jquery");
 const glob = require('glob');
+var request = require('request');
+const chalk = require('chalk');
 
 let tExcludeFileCDN = ["webapp/flpSandbox.html", "webapp/index.html"];
 
@@ -66,15 +68,6 @@ module.exports = class extends Generator {
               store: true
             },
             {
-              type: "input",
-              name: "ODataServiceURL",
-              message: "ODATA Service uri",
-              default: "/sap/opu/odata/sap/MyService",
-              validate: (sInput) => {
-                return /^[a-zA-Z_\/0-9-]+$/.test(sInput);
-              }
-            },
-            {
               type: "number",
               name: "serverClient",
               message: "ABAP Server client",
@@ -92,7 +85,57 @@ module.exports = class extends Generator {
               name: "password",
               message: "ABAP Server password",
               store: true
-            }]);
+            }]).then((answer) => {
+              this.log.write(chalk.bold.white('Service Odata retreiving...'));
+              var res = new Promise((resolve, reject) => {
+                request.get({
+                  uri: answer.ODataServer + "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection?$orderby=TechnicalServiceName asc&$format=json",
+                  method: 'GET',
+                  auth: {
+                    user: answer.userID,
+                    pass: answer.password,
+                    sendImmediately: false
+                  }
+                }, (error, response, body) => {
+                  if (response) {
+                    process.stdout.clearLine();
+
+                    var data = JSON.parse(response.toJSON().body);
+                    var tService = [];
+                    data.d.results.forEach((elem) => {
+                      tService.push(elem.ServiceUrl.substring(elem.ServiceUrl.indexOf("/sap/opu")));
+                    });
+                    resolve(tService.sort());
+                  } else {
+                    process.stdout.clearLine();
+                    this.log.write(chalk.red.white('Error connection to server: ' + answer.ODataServer));
+                    resolve([]);
+                  }
+                }
+
+                )
+              });
+
+
+
+              return res.then((serviceList) => {
+                if (serviceList.length > 0) {
+                  return this.prompt([{
+                    type: "list",
+                    name: "ODataServiceURL",
+                    message: "ODATA Service uri",
+                    choices: serviceList
+                  }]);
+                } else {
+                  return this.prompt([{
+                    type: "input",
+                    name: "ODataServiceURL",
+                    message: "ODATA Service uri",
+                    default: '/sap/opu/odata/sap/ZMY_DEMO_SRV'
+                  }]);
+                }
+              });
+            });
           }
         });
 
