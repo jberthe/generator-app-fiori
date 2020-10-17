@@ -22,9 +22,10 @@ describe('CDN Project without OData service', function () {
     it("Genertate application", () => {
         
 
-        return helpers.run(path.join(__dirname, '../generators/app'))
-            .inDir(path.join(__dirname, 'tmp'))
-        
+        return   helpers.run(path.join(__dirname, '../generators/app'))
+       //     .inDir(path.join(__dirname, 'tmp'))
+       .inTmpDir()
+           
             .withPrompts({
                 projectname: "ProjectCDNNoService_UT",
                 name_space: "ch.my.company.module",
@@ -99,4 +100,6 @@ describe('CDN Project without OData service', function () {
     it("Service OData shouldn't be here", () => {
         assert.noFileContent("webapp/manifest.json", '"mainService": {');
     });
+
+
 });

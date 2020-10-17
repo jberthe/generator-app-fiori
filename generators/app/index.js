@@ -86,6 +86,9 @@ module.exports = class extends Generator {
               message: "ABAP Server password",
               store: true
             }]).then((answer) => {
+              for (var myKey in answer) {
+                this.full_answer.ODataConf[myKey] = answer[myKey];
+              }
               this.log.write(chalk.bold.white('Service Odata retreiving...'));
               var res = new Promise((resolve, reject) => {
                 request.get({
@@ -108,7 +111,7 @@ module.exports = class extends Generator {
                     resolve(tService.sort());
                   } else {
                     process.stdout.clearLine();
-                    this.log.write(chalk.red.white('Error connection to server: ' + answer.ODataServer));
+                    this.log.write(chalk.red.white('Error connection to server: ' + answer.ODataServer + "\n\r"));
                     resolve([]);
                   }
                 }
