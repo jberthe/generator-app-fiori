@@ -22,8 +22,8 @@ describe('CDN Project with OData service', function () {
     it("Genertate application", () => {
         
         return helpers.run(path.join(__dirname, '../generators/app'))
-            .inDir(path.join(__dirname, 'tmp'))
-            //.inTmpDir()
+            //.inDir(path.join(__dirname, 'tmp'))
+            .inTmpDir()
         
             .withPrompts({
                 projectname: "ProjectCDNWithService_UT",
