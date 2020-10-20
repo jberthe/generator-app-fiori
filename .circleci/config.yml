@@ -1,0 +1,28 @@
+version: 2.1
+
+orbs:
+  coveralls: coveralls/coveralls@1.0.5
+  node: circleci/node@1.1.6
+
+jobs:
+  build-1:
+    executor:
+      name: node/default
+
+    steps:
+      - checkout
+
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: make test-coverage-1
+
+      - coveralls/upload:
+          parallel: true
+          flag_name: Test 1
+          verbose: true
+
+workflows:
+  test_parallel_then_upload:
+    jobs:
+      - build-1
