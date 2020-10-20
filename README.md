@@ -1,5 +1,5 @@
 [![NPM version][npm-image]][npm-url]
-[![Build Status][circleci-image]][circleci-url]
+[![CircleCI](https://circleci.com/gh/jberthe/generator-app-fiori.svg?style=svg)](https://circleci.com/gh/atom/github/tree/master)
 
 # Description
 This generator creates a Fiori application based on Work-List template. It uses the last UI5 Tooling to make your life easier. The generated project embed alse a Fiori Launchpad Sandbox to integrate a SAPui5 Component. You do not need to create an `index.html` to load your project.
