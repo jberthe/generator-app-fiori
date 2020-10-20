@@ -1,4 +1,4 @@
-[![NPM version][npm-image]][npm-url]
+[![npm version](https://badge.fury.io/js/generator-app-fiori.svg)](https://badge.fury.io/js/generator-app-fiori)
 [![CircleCI](https://circleci.com/gh/jberthe/generator-app-fiori.svg?style=svg)](https://circleci.com/gh/atom/github/tree/master)
 
 # Description
