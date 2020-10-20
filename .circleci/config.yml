@@ -1,13 +1,9 @@
 version: 2.1
 
-orbs:
-  coveralls: coveralls/coveralls@1.0.5
-  node: circleci/node@1.1.6
-
 jobs:
   build-1:
-    executor:
-      name: node/default
+    docker:
+      - image: circleci/node:14
 
     steps:
       - checkout
