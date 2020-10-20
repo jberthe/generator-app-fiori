@@ -3,22 +3,18 @@ version: 2.1
 jobs:
   build-1:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:8.9.1
 
     steps:
       - checkout
 
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: make test-coverage-1
-
-      - coveralls/upload:
-          parallel: true
-          flag_name: Test 1
-          verbose: true
+      - run: npm install
+      - run: make test-coverage-1
 
 workflows:
-  test_parallel_then_upload:
+  test:
     jobs:
-      - build-1
+      - build-1:
+        filters:
+            tags:
+              only: /^v.*/
