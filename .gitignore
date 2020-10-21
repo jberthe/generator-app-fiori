@@ -1,4 +1,4 @@
 node_modules/
-test/tmp/
+test/sandbox/
 coverage
 .nyc_output

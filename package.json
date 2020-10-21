@@ -4,7 +4,7 @@
   "description": "Generate Fiori Application based on Fiori Guidelines, conected to ABAP server and using the last UI5 Tooling.",
   "main": "generators/app/index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --timeout 30000",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -21,12 +21,15 @@
     "glob": "^7.1.5",
     "jquery": "^3.5.1",
     "node-inspect": "^2.0.0",
-    "yeoman-generator": "^4.12.0"
+    "yeoman-generator": "^4.12.0",
+    "rimraf": "*",
+    "temp": "0.9.1"
   },
   "files": [
     "generators",
     "app",
-    "router"
+    "newfragment",
+    "changeui5version"
   ],
   "keywords": [
     "yeoman-generator",
