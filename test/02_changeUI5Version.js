@@ -40,9 +40,10 @@ describe('Change UI5 Version in project folder.', function () {
 				});
 		});
 
-		it("Should have modify the version", () => {
+		it("Should have modify the version", (done) => {
 			setTimeout(() => {
 				assert.fileContent('webapp/test/flpSandboxCDN.html', "9.99.99");
+				done();
 			}, 5000);
 		
 		})
