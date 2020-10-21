@@ -22,23 +22,16 @@ var SANDBOX = path.resolve(__dirname, 'sandbox');
 
 var temp = require('temp').track();
 
-describe('Create project infolder', function () {
+describe('Create Sandbox project', function () {
 	before(function (done) {
 		helpers.testDirectory(SANDBOX, done);
 	});
 
-	after(function (done) {
-		//	temp.cleanup();
-		done();
-		//	rimraf(path.join(__dirname, 'temp'), done);
-	});
 
 	describe("Generate the root application", () => {
 		it("Load generator", () => {
 			return  helpers.run(path.join(__dirname, '../generators/app'))
 				.cd(SANDBOX)
-				//.inDir(path.join(__dirname, 'tmp'))
-				//.inTmpDir()
 				.withPrompts({
 					projectname: "ProjectCDNNoService_UT",
 					name_space: "ch.my.company.module",
@@ -50,9 +43,7 @@ describe('Create project infolder', function () {
 		});
 
 		it("Check version", () => {
-
 				assert.fileContent('webapp/test/flpSandboxCDN.html', "1.71.26");
-
 		});
 	});
 

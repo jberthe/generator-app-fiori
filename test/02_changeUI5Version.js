@@ -21,17 +21,13 @@ var SANDBOX = path.resolve(__dirname, 'sandbox/ProjectCDNNoService_UT');
 var temp = require('temp').track();
 
 describe('Change UI5 Version in project folder.', function () {
-	
-
-	describe("Generate the root application", () => {
-
-		it("Check version", () => {
-			assert.fileContent('webapp/test/flpSandboxCDN.html', "1.71.26");
-		});
-	});
 
 	describe("Launch the sub-generator", () => {
-		it("", function (done) {
+		it("Check the current version", () => {
+			assert.fileContent('webapp/test/flpSandboxCDN.html', "1.71.26");
+		});
+
+		it("Change the version to 9.99.99", function (done) {
 			helpers.run(path.join(__dirname, '../generators/changeui5version'))
 
 				.cd(SANDBOX)
@@ -47,7 +43,7 @@ describe('Change UI5 Version in project folder.', function () {
 		it("Should have modify the version", () => {
 			setTimeout(() => {
 				assert.fileContent('webapp/test/flpSandboxCDN.html', "9.99.99");
-			}, 2000);
+			}, 5000);
 		
 		})
 	});
