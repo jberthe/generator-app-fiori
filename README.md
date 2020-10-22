@@ -1,12 +1,17 @@
 # Description
 This generator creates a Fiori application based on Work-List template. It uses the last UI5 Tooling to make your life easier. The generated project embed alse a Fiori Launchpad Sandbox to integrate a SAPui5 Component. You do not need to create an `index.html` to load your project.
 
-This template is for Fiori programmers which develop on On-Premise ABAP system.
+This template is for Fiori programmers which develop on *On-Premise ABAP system*.
+
+We have added a cool feature during the generation. The OData service is now provided by the server. Thus, a list a available OData service is show and selectable.
+
+![](./doc/odataservice_lis.jpg)
 
 ## Context
-The generator will provide to you an application in UI5 local environment. The UI5 library should be already installed locally. Its also give you an application connected to your ABAP server.
+The generator will provide to you an application in UI5 local environment or with CDN.
 
 ## How-To
+* For local library:
 We assume that you execute the generator in the following environement :
 ```
 <root_folder>
@@ -15,6 +20,8 @@ We assume that you execute the generator in the following environement :
    |
    +- You are HERE !!!
 ```
+* For CDN scenario : nothing speciale to have.
+
 ### Install
 1. Get [Node.js](https://nodejs.org/en/download/) (version 8.5 or higher)
 2. Install the generator
@@ -51,7 +58,9 @@ We assume that you execute the generator in the following environement :
 
 This command will build your UI5 application into `dist` folder, and then deploy into your ABAP system.
 
-All the crednetials should be done in the fil *.env*. It should be ignore by the git engine for security purpose. All the **TODO** statements should be replaced.
+All the crednetials should be done in the file *.env*. It should be ignore by the git engine for security purpose. 
+
+All the **TODO** statements should be replaced.
 
 ##### Configuration
 Before launching the script please update your `ui5.yaml` file in the section `ui5` :
@@ -81,6 +90,8 @@ npm deploy
 - [X] ES6 lint
 - [X] Class template for OData call with promise
 - [X] Class template for UIModel
+- [X] Add fragemnt as sub-generator
+- [X] Change UI5 version for CDN scenario
 
 ## Others Commands
 ### Change UI5 version
@@ -88,6 +99,15 @@ With that command, if you have configured the CDN approach, then you will be abl
 
  ```sh
 myRepo> npm yo:changeui5version
+```
+### Add new fragment
+You can add a new fragment in your application. We provide 3 templates :
+* Empty fragment
+* SimpleForm 
+* SelectDialog
+
+ ```sh
+myRepo> npm yo:newfragment
 ```
 
 ## References
@@ -102,8 +122,12 @@ I wanted to fork the Easy-ui5 generator but the structre was not what I expected
 ### Version 1.3.0
 * Upd: Prompting CDN UI5 version add other to be able to use another library
 * Add: command changeui5version
-* Fix: Odata mainservice when no servic prompting
+* Add: command newfragment with 3 templates
+* Fix: Odata mainservice when no service prompting
 * Add: OData service helper during the prompting process. A REST request is sent to retreive all services available.
+* Generator quality
+    + Add unit test for the generator
+    + Add code coverage for the generator
  
 
 ### Version 1.2.2
