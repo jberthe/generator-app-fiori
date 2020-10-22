@@ -7,7 +7,7 @@ This generator creates a Fiori application based on Work-List template. It uses 
 
 This template is for Fiori programmers which develop on *On-Premise ABAP system*.
 
-We have added a cool feature during the generation. The OData service is now provided by the server. Thus, a list a available OData service is show and selectable.
+We have added a cool feature during the generation. The OData service is now provided by the server. Thus, a list of available OData services is shown and selectable.
 
 ![](./doc/odataservice_lis.jpg)
 
