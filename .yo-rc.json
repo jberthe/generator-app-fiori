@@ -1,0 +1,11 @@
+{
+  "generator-app-fiori": {
+    "promptValues": {
+      "isODataConf": "Yes",
+      "ODataServer": "http://saphir101.ddns.net:8000/",
+      "serverClient": "100",
+      "userID": "jberthe",
+      "password": "joseph23"
+    }
+  }
+}

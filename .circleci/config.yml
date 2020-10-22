@@ -1,0 +1,32 @@
+version: 2.1
+
+jobs:
+  build-1:
+    docker:
+      - image: circleci/node:8.9.1
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: npm install
+      - run: npm run coverage
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+
+workflows:
+  test:
+    jobs:
+      - build-1:
+        filters:
+            tags:
+              only: /^v.*/

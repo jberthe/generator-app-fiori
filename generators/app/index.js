@@ -17,7 +17,10 @@
 var Generator = require('yeoman-generator');
 var $ = require("jquery");
 const glob = require('glob');
+var request = require('request');
+const chalk = require('chalk');
 
+let tExcludeFileCDN = ["webapp/flpSandbox.html", "webapp/index.html"];
 
 module.exports = class extends Generator {
 
@@ -65,15 +68,6 @@ module.exports = class extends Generator {
               store: true
             },
             {
-              type: "input",
-              name: "ODataServiceURL",
-              message: "ODATA Service uri",
-              default: "/sap/opu/odata/sap/MyService",
-              validate: (sInput) => {
-                return /^[a-zA-Z_\/0-9-]+$/.test(sInput);
-              }
-            },
-            {
               type: "number",
               name: "serverClient",
               message: "ABAP Server client",
@@ -91,7 +85,60 @@ module.exports = class extends Generator {
               name: "password",
               message: "ABAP Server password",
               store: true
-            }]);
+            }]).then((answer) => {
+              for (var myKey in answer) {
+                this.full_answer.ODataConf[myKey] = answer[myKey];
+              }
+              this.log.write(chalk.bold.white('Service Odata retreiving...'));
+              var res = new Promise((resolve, reject) => {
+                request.get({
+                  uri: answer.ODataServer + "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/ServiceCollection?$orderby=TechnicalServiceName asc&$format=json",
+                  method: 'GET',
+                  auth: {
+                    user: answer.userID,
+                    pass: answer.password,
+                    sendImmediately: false
+                  }
+                }, (error, response, body) => {
+                  if (response) {
+                    process.stdout.clearLine();
+
+                    var data = JSON.parse(response.toJSON().body);
+                    var tService = [];
+                    data.d.results.forEach((elem) => {
+                      tService.push(elem.ServiceUrl.substring(elem.ServiceUrl.indexOf("/sap/opu")));
+                    });
+                    resolve(tService.sort());
+                  } else {
+                    process.stdout.clearLine();
+                    this.log.write(chalk.red.white('Error connection to server: ' + answer.ODataServer + "\n\r"));
+                    resolve([]);
+                  }
+                }
+
+                )
+              });
+
+
+
+              return res.then((serviceList) => {
+                if (serviceList.length > 0) {
+                  return this.prompt([{
+                    type: "list",
+                    name: "ODataServiceURL",
+                    message: "ODATA Service uri",
+                    choices: serviceList
+                  }]);
+                } else {
+                  return this.prompt([{
+                    type: "input",
+                    name: "ODataServiceURL",
+                    message: "ODATA Service uri",
+                    default: '/sap/opu/odata/sap/ZMY_DEMO_SRV'
+                  }]);
+                }
+              });
+            });
           }
         });
 
@@ -124,6 +171,7 @@ module.exports = class extends Generator {
 
         if (sub_answers.is_local_library === "CDN") {
           this.full_answer["isCDN"] = true;
+          this.log.write('\r\nThe UI5 version can be change later by the command : app-fiori:changeui5version\r\n');
           this.prompt([{
             type: "list",
             name: "UI5Version",
@@ -193,22 +241,14 @@ module.exports = class extends Generator {
       cwd: this.sourceRoot(),
       nodir: true
     }).forEach((file) => {
-      const sOrigin = this.templatePath(file);
-      const sTarget = this.destinationPath(file.replace(/^_/, '').replace(/\/_/, '/'));
+      if (!this.options.oneTimeConfig.isCDN || (this.options.oneTimeConfig.isCDN && !tExcludeFileCDN.find((elem) => elem === file))) {
 
-      this.fs.copyTpl(sOrigin, sTarget, this.options.oneTimeConfig);
+        const sOrigin = this.templatePath(file);
+        const sTarget = this.destinationPath(file.replace(/^_/, '').replace(/\/_/, '/'));
+
+        this.fs.copyTpl(sOrigin, sTarget, this.options.oneTimeConfig);
+      }
     });
-
-    glob.sync('**/.*', {
-      cwd: this.sourceRoot(),
-      nodir: true
-    }).forEach((file) => {
-      const sOrigin = this.templatePath(file);
-      const sTarget = this.destinationPath(file.replace(/^_/, '').replace(/\/_/, '/'));
-
-      this.fs.copyTpl(sOrigin, sTarget, this.options.oneTimeConfig);
-    });
-
 
   }
 
