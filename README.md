@@ -1,6 +1,7 @@
 [![npm version](https://badge.fury.io/js/generator-app-fiori.svg)](https://badge.fury.io/js/generator-app-fiori)
 [![CircleCI](https://circleci.com/gh/jberthe/generator-app-fiori.svg?style=svg)](https://circleci.com/gh/atom/github/tree/master)
-[![Coverage Status](https://coveralls.io/repos/github/jberthe/generator-app-fiori/badge.svg?branch=develop)](https://coveralls.io/github/jberthe/generator-app-fiori?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/jberthe/generator-app-fiori/badge.svg?branch=master)](https://coveralls.io/github/jberthe/generator-app-fiori?branch=master)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # Description
 This generator creates a Fiori application based on Work-List template. It uses the last UI5 Tooling to make your life easier. The generated project embed alse a Fiori Launchpad Sandbox to integrate a SAPui5 Component. You do not need to create an `index.html` to load your project.
