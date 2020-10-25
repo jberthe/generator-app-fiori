@@ -17,14 +17,19 @@
 const helpers = require('yeoman-test');
 const path = require('path');
 const assert = require('yeoman-assert');
+var SANDBOX = path.resolve(__dirname, 'sandbox');
 
 describe('CDN Project with OData service', function () {
+    before(function (done) {
+		helpers.testDirectory(SANDBOX, done);
+    });
+    
     it("Genertate application", () => {
         
         return helpers.run(path.join(__dirname, '../generators/app'))
             //.inDir(path.join(__dirname, 'tmp'))
-            .inTmpDir()
-        
+           // .inTmpDir()
+           .cd(SANDBOX)
             .withPrompts({
                 projectname: "ProjectCDNWithService_UT",
                 name_space: "ch.my.company.module",
@@ -32,7 +37,7 @@ describe('CDN Project with OData service', function () {
                 UI5Version: "1.71.26",
                 isODataConf: "Yes",
                 ODataServer: "https://my.server.local:8001",
-                serverClient: "100",
+                serverClient: "2",
                 userID: "demo",
                 password: "demo",
                 ODataServiceURL: "/sap/opu/odata/sap/ZMY_DEMO_SRV"
@@ -112,13 +117,13 @@ describe('CDN Project with OData service', function () {
     it("Credential should be in the .env file", () => {
         assert.fileContent(".env", 'UI5_TASK_NWABAP_DEPLOYER__USER=demo');
         assert.fileContent(".env", 'UI5_TASK_NWABAP_DEPLOYER__PASSWORD=demo');
-        assert.fileContent(".env", 'UI5_TASK_NWABAP_DEPLOYER__CLIENT=100');
+        assert.fileContent(".env", 'UI5_TASK_NWABAP_DEPLOYER__CLIENT=002');
         assert.fileContent(".env", 'PROXY_PASSWORD=demo');
         assert.fileContent(".env", 'PROXY_USERNAME=demo');
     });
 
     
-    it("Client should be in 3 chqrqcters", () => {
-        assert.fileContent("ui5.yaml", "client: 002");
+    it("Client should be in 3 characters", () => {
+        assert.fileContent("ui5.yaml", 'client: "002"');
     });
 });
