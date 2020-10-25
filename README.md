@@ -98,7 +98,7 @@ npm deploy
 With that command, if you have configured the CDN approach, then you will be able to modify the version of your file.
 
  ```sh
-myRepo> npm yo:changeui5version
+myRepo> npm yo app-fiori:changeui5version
 ```
 ### Add new fragment
 You can add a new fragment in your application. We provide 3 templates :
@@ -107,7 +107,7 @@ You can add a new fragment in your application. We provide 3 templates :
 * SelectDialog
 
  ```sh
-myRepo> npm yo:newfragment
+myRepo> npm yo app-fiori:newfragment
 ```
 
 ## References
@@ -119,6 +119,9 @@ I based my work on multiple sources.
 I wanted to fork the Easy-ui5 generator but the structre was not what I expected. I do not want the abillity to add HTML or JS view. The application I wanted to have as template should have App.view as starting point. Furthermore, I wanted to used the semantic page to build my application.
 
 ## Release
+### Version 1.3.1
+Fix: Client under 100 cause connection issue #7
+
 ### Version 1.3.0
 * Upd: Prompting CDN UI5 version add other to be able to use another library
 * Add: command changeui5version
