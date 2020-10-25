@@ -16,7 +16,6 @@
 const helpers = require('yeoman-test');
 const path = require('path');
 const assert = require('yeoman-assert');
-const rimraf = require('rimraf');
 const { doesNotMatch } = require('yeoman-assert');
 var SANDBOX = path.resolve(__dirname, 'sandbox');
 

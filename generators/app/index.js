@@ -233,9 +233,17 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    let zeroPad = function(num, places) {
+      var zero = places - num.toString().length + 1;
+      return Array(+(zero > 0 && zero)).join("0") + num;
+    }
+
     this.options.oneTimeConfig = this.config.getAll();
     this.options.oneTimeConfig.fullNamespace = this.options.oneTimeConfig.name_space + "." + this.options.oneTimeConfig.projectname;
 
+    if (this.options.oneTimeConfig.ODataConf.serverClient) {
+      this.options.oneTimeConfig.ODataConf.serverClient = zeroPad(this.options.oneTimeConfig.ODataConf.serverClient, 3);
+    }
 
     glob.sync('**', {
       cwd: this.sourceRoot(),
@@ -258,4 +266,6 @@ module.exports = class extends Generator {
       npm: true
     });
   }
+
+  
 };
