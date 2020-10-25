@@ -116,4 +116,9 @@ describe('CDN Project with OData service', function () {
         assert.fileContent(".env", 'PROXY_PASSWORD=demo');
         assert.fileContent(".env", 'PROXY_USERNAME=demo');
     });
+
+    
+    it("Client should be in 3 chqrqcters", () => {
+        assert.fileContent("ui5.yaml", "client: 002");
+    });
 });
