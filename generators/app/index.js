@@ -101,7 +101,7 @@ module.exports = class extends Generator {
                   }
                 }, (error, response, body) => {
                   if (response) {
-                    process.stdout.clearLine();
+                   this.log("\u001b[2J\u001b[0;0H");
 
                     var data = JSON.parse(response.toJSON().body);
                     var tService = [];
@@ -110,7 +110,7 @@ module.exports = class extends Generator {
                     });
                     resolve(tService.sort());
                   } else {
-                    process.stdout.clearLine();
+                    this.log("\u001b[2J\u001b[0;0H");
                     this.log.write(chalk.red.white('Error connection to server: ' + answer.ODataServer + "\n\r"));
                     resolve([]);
                   }
