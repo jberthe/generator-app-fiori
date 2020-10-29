@@ -124,6 +124,9 @@ I based my work on multiple sources.
 I wanted to fork the Easy-ui5 generator but the structre was not what I expected. I do not want the abillity to add HTML or JS view. The application I wanted to have as template should have App.view as starting point. Furthermore, I wanted to used the semantic page to build my application.
 
 ## Release
+### Version 1.3.2
+Fix: stdout clear on SAP Application Wizard UI
+
 ### Version 1.3.1
 Fix: Client under 100 cause connection issue #7
 
