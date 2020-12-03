@@ -101,7 +101,7 @@ module.exports = class extends Generator {
                   }
                 }, (error, response, body) => {
                   if (response) {
-                    process.stdout.clearLine();
+                   this.log("\u001b[2J\u001b[0;0H");
 
                     var data = JSON.parse(response.toJSON().body);
                     var tService = [];
@@ -110,7 +110,7 @@ module.exports = class extends Generator {
                     });
                     resolve(tService.sort());
                   } else {
-                    process.stdout.clearLine();
+                    this.log("\u001b[2J\u001b[0;0H");
                     this.log.write(chalk.red.white('Error connection to server: ' + answer.ODataServer + "\n\r"));
                     resolve([]);
                   }
@@ -233,9 +233,17 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    let zeroPad = function(num, places) {
+      var zero = places - num.toString().length + 1;
+      return Array(+(zero > 0 && zero)).join("0") + num;
+    }
+
     this.options.oneTimeConfig = this.config.getAll();
     this.options.oneTimeConfig.fullNamespace = this.options.oneTimeConfig.name_space + "." + this.options.oneTimeConfig.projectname;
 
+    if (this.options.oneTimeConfig.ODataConf.serverClient) {
+      this.options.oneTimeConfig.ODataConf.serverClient = zeroPad(this.options.oneTimeConfig.ODataConf.serverClient, 3);
+    }
 
     glob.sync('**', {
       cwd: this.sourceRoot(),
@@ -258,4 +266,6 @@ module.exports = class extends Generator {
       npm: true
     });
   }
+
+  
 };

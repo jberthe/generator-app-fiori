@@ -17,30 +17,21 @@
 const helpers = require('yeoman-test');
 const path = require('path');
 const assert = require('yeoman-assert');
-var SANDBOX = path.resolve(__dirname, 'sandbox');
 
-describe('CDN Project with OData service', function () {
-    before(function (done) {
-		helpers.testDirectory(SANDBOX, done);
-    });
-    
+describe('CDN Project without OData service', function () {
     it("Genertate application", () => {
         
-        return helpers.run(path.join(__dirname, '../generators/app'))
-            //.inDir(path.join(__dirname, 'tmp'))
-           // .inTmpDir()
-           .cd(SANDBOX)
+
+        return   helpers.run(path.join(__dirname, '../generators/app'))
+       //     .inDir(path.join(__dirname, 'tmp'))
+       .inTmpDir()
+           
             .withPrompts({
-                projectname: "ProjectCDNWithService_UT",
+                projectname: "ProjectCDNNoService_UT",
                 name_space: "ch.my.company.module",
-                is_local_library: "CDN",
+                is_local_library: "Local library",
                 UI5Version: "1.71.26",
-                isODataConf: "Yes",
-                ODataServer: "https://my.server.local:8001",
-                serverClient: "2",
-                userID: "demo",
-                password: "demo",
-                ODataServiceURL: "/sap/opu/odata/sap/ZMY_DEMO_SRV"
+                isODataConf: "No"
             });
         }
     );
@@ -76,15 +67,11 @@ describe('CDN Project with OData service', function () {
             'webapp/controller/BaseController.js',
             'webapp/controller/ErrorHandler.js',
             'webapp/controller/Main.controller.js',
-            'webapp/controller/NotFound.controller.js'
-        ]);
-
-    });
-    it("Files should not exist", () => {
-        assert.noFile([
+            'webapp/controller/NotFound.controller.js',
             'webapp/flpSandbox.html',
             'webapp/index.html'
         ]);
+
     });
 
     it('NPM scripts should exist', () => {
@@ -96,34 +83,16 @@ describe('CDN Project with OData service', function () {
         assert.fileContent('package.json', '"test"');
     });
 
-    it("ui5.yaml should not contains.", () => {
-        assert.noFileContent("ui5.yaml", "ui5-middleware-servestatic");
-        assert.noFileContent("ui5.yaml", "mountPath: /ui5");
+    it("ui5.yaml should contains.", () => {
+        assert.fileContent("ui5.yaml", "ui5-middleware-servestatic");
+        assert.fileContent("ui5.yaml", "mountPath: /ui5");
+        assert.fileContent("ui5.yaml", 'rootPath: "../ui5"');
     
-    });
-    
-    it("UI5 Library should be", () => {
-        assert.fileContent("webapp/test/flpSandboxCDN.html", "https://ui5.sap.com/1.71.26/");
     });
 
-    it("Server shouldne set", () => {
-        assert.fileContent("ui5.yaml", 'baseUri: "https://my.server.local:8001/sap"');
-    });
-    
-    it("Service OData should be here", () => {
-        assert.fileContent("webapp/manifest.json", '"mainService": {');
+    it("Service OData shouldn't be here", () => {
+        assert.noFileContent("webapp/manifest.json", '"mainService": {');
     });
 
-    it("Credential should be in the .env file", () => {
-        assert.fileContent(".env", 'UI5_TASK_NWABAP_DEPLOYER__USER=demo');
-        assert.fileContent(".env", 'UI5_TASK_NWABAP_DEPLOYER__PASSWORD=demo');
-        assert.fileContent(".env", 'UI5_TASK_NWABAP_DEPLOYER__CLIENT=002');
-        assert.fileContent(".env", 'PROXY_PASSWORD=demo');
-        assert.fileContent(".env", 'PROXY_USERNAME=demo');
-    });
 
-    
-    it("Client should be in 3 characters", () => {
-        assert.fileContent("ui5.yaml", 'client: "002"');
-    });
 });
